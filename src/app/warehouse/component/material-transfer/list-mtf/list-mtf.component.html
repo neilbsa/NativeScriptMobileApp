@@ -1,0 +1,44 @@
+<ActionBar class="action-bar">
+    <NavigationButton visibility="hidden"></NavigationButton>
+    <GridLayout columns="50, *">
+        <Label class="action-bar-title" text="MTF LIST" colSpan="2"></Label>
+        <Label class="fas" text="&#xf04a;" (tap)="navigateBack()"></Label>
+    </GridLayout>
+</ActionBar>
+
+
+
+
+<GridLayout orientation="vertical" rows="auto, *" tkExampleTitle tkToggleNavButton>
+
+    <RadListView  
+    #purchaseOrderListView
+    [items]="materialtransferList"
+    (itemTap)="onItemTap($event)"
+     row="1" 
+     selectionBehavior="None" 
+     (itemSwipeProgressEnded)="onSwipeCellFinished($event)"
+     (itemSwipeProgressStarted)="onSwipeCellStarted($event)" 
+     (itemSwipeProgressChanged)="onCellSwiping($event)"
+      swipeActions="true"
+      >
+        <ng-template tkListItemTemplate let-item="item">
+            <StackLayout width="auto"  class="form mtf-item" orientation="vertical">
+                <GridLayout rows="*" cols="*">
+                    <Label class="label" row="0" col="0" [text]="item.Reference"></Label>
+                </GridLayout>
+            </StackLayout>
+        </ng-template>
+    
+        <GridLayout *tkListItemSwipeTemplate columns="auto, *, auto" class="gridLayoutLayout">
+            <StackLayout  id="upload-view" col="0" class="btn btn-info swipeLeftButton" >
+                <Label text="Upload" class="swipeTemplateLabel" verticalAlignment="center"  horizontalAlignment="center"></Label>
+            </StackLayout>
+            <StackLayout  id="delete-view" col="2" class="btn btn-info swipeRightButton"  >
+                <Label text="Delete" class="swipeTemplateLabel " verticalAlignment="center" horizontalAlignment="center"></Label>
+            </StackLayout>
+        </GridLayout>
+        
+    </RadListView>
+    
+    </GridLayout>

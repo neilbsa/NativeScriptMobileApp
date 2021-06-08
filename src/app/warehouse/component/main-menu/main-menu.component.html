@@ -1,0 +1,24 @@
+<ActionBar class="action-bar">
+    <NavigationButton visibility="hidden"></NavigationButton>
+    <GridLayout columns="50, *">
+        <Label class="action-bar-title" text="Warehouse" colSpan="2"></Label>
+
+        <Label class="fas" text="&#xf0c9;" (tap)="onDrawerButtonTap()"></Label>
+    </GridLayout>
+</ActionBar>
+
+
+
+<StackLayout>
+    <StackLayout orientation="horizontal"> 
+        <Button (tap)="onMainButtonClick('forcast')" text="Forcast" class="btn btn-primary mainButton"  row="0" col="0" ></Button>
+        <Button (tap)="onMainButtonClick('materialtransfer')" text="Material Transfer" class="btn btn-primary mainButton"  row="0" col="1"></Button>
+        
+    </StackLayout>
+    <StackLayout orientation="horizontal"> 
+        <!-- <Button text="Pick List" class="btn btn-primary mainButton"  row="0" col="1"></Button>
+        (tap)="onMainButtonClick('picklist')" -->
+    </StackLayout>
+
+ 
+</StackLayout>

@@ -1,0 +1,14 @@
+<GridLayout rows="auto,auto" columns ="auto,*">
+    <form class="form"  [formGroup]="releaseParamForm">
+        <Label col="0" row="0"  class="form-control" text="Location: "></Label>
+        <Label col="0" row="1"  class="form-control" text="Status: "></Label>
+       
+        <TextField col="1" row="0" class="input" formControlName="picklocation"  > </TextField>
+        <TextField col="1" row="1" class="input" formControlName="statusremarks" > </TextField>
+      
+    </form>
+   
+</GridLayout>
+<StackLayout>
+    <Button text="Confirm changes" [isEnabled]="releaseParamForm.valid && !this.isLoading" (tap)="submitReleaseParam()" class="btn btn-primary"></Button>
+</StackLayout>

@@ -1,0 +1,24 @@
+
+<ActionBar class="action-bar">
+    <NavigationButton visibility="hidden"></NavigationButton>
+    <GridLayout columns="50, *">
+        <Label class="action-bar-title" text="{{appName}}" colSpan="2"></Label>
+
+
+    </GridLayout>
+</ActionBar>
+
+
+<form class="form" [formGroup]="loginForm"  >
+    <StackLayout>
+    <StackLayout class="input-field"  >
+      <TextField  class="input"  [isEnabled]="!processing" formControlName="username"></TextField>
+    </StackLayout>
+  
+    <StackLayout class="input-field">
+      <TextField class="input" [isEnabled]="!processing" secure="true" formControlName="password"></TextField>
+    </StackLayout>
+  
+    <Button text="{{ processing ? 'Loading please wait. . .' : 'Login' }}" [isEnabled]="!processing" class="btn btn-primary" (tap)="loginIn()" type="submit"></Button>
+</StackLayout>
+</form>

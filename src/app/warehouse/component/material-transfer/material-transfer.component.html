@@ -1,0 +1,14 @@
+<ActionBar class="action-bar">
+    <NavigationButton visibility="hidden"></NavigationButton>
+    <GridLayout columns="50, *">
+        <Label class="action-bar-title" text="MTF" colSpan="2"></Label>
+        <Label class="fas" text="&#xf04a;" (tap)="navigateBack()"></Label>
+    </GridLayout>
+</ActionBar>
+
+
+
+<StackLayout>
+    <Button (tap)="onTapNavigate('mtfscan')" text="Download MTF"></Button>
+    <Button (tap)="onTapNavigate('mtflist')" text="Saved MTF"></Button>
+</StackLayout>

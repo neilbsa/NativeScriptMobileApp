@@ -1,0 +1,52 @@
+<ActionBar class="action-bar">
+    <NavigationButton visibility="hidden"></NavigationButton>
+    <GridLayout columns="50, *">
+        <Label class="action-bar-title" [text]="currentSelectedPurchaseOrder.Reference" colSpan="2"></Label>
+        <Label class="fas" text="&#xf04a;" (tap)="navigateBack()"></Label>
+    </GridLayout>
+</ActionBar>
+
+
+
+<GridLayout orientation="vertical" rows="auto, *" tkExampleTitle tkToggleNavButton>
+
+
+  
+
+
+
+    <RadListView  
+    #detailsListView
+    [items]="dataItem"
+
+     row="1" 
+     selectionBehavior="None" 
+     (itemSwipeProgressEnded)="onSwipeCellFinished($event)"
+     (itemSwipeProgressStarted)="onSwipeCellStarted($event)" 
+     (itemSwipeProgressChanged)="onCellSwiping($event)"
+      swipeActions="true"
+      >
+        <ng-template tkListItemTemplate let-item="item">
+            <StackLayout width="auto"  class="form forcast-item" orientation="vertical">
+                <GridLayout rows="*,*" cols="*,*,*">
+                    <GridLayout row="0" col="0" rows="*,*" columns="*,*,50">
+                        <Label class="label" row="0" col="0" [text]="item.PartNumber"></Label>
+                        <Label [ngClass]="{notFullFilled: item.Quantity !== item.ReceivedQuantity,fullFilled: item.Quantity === item.ReceivedQuantity }" row="0" col="2" text="{{ item.ReceivedQuantity }}/{{ item.Quantity }}"></Label>
+                        <Label class="label" row="1" col="0" [text]="item.PartDescription"></Label>
+                    </GridLayout>
+                </GridLayout>
+            </StackLayout>
+        </ng-template>
+    
+        <GridLayout rows="*,*" *tkListItemSwipeTemplate columns="auto, *, auto" class="gridLayoutLayout">
+            <StackLayout  id="upload-view" col="0" class="swipe swipeLeftButton btn btn-info" >
+                <Label text="Full" class="swipeTemplateLabel" verticalAlignment="center"  horizontalAlignment="center"></Label>
+            </StackLayout>
+            <StackLayout  id="delete-view" col="2" class="swipe swipeRightButton btn btn-info" >
+                <Label text="Partial" class="swipeTemplateLabel" verticalAlignment="center" horizontalAlignment="center"></Label>
+            </StackLayout>
+        </GridLayout>
+        
+    </RadListView>
+    
+    </GridLayout>

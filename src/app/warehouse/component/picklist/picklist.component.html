@@ -1,0 +1,119 @@
+<ActionBar class="action-bar">
+    <NavigationButton visibility="hidden"></NavigationButton>
+    <GridLayout columns="50, *">
+        <Label class="action-bar-title" text="IA processing" colSpan="2"></Label>
+        <Label class="fas" text="&#xf04a;" (tap)="navigateBack()"></Label>
+    </GridLayout>
+</ActionBar>
+
+
+<StackLayout>
+    <StackLayout  class="p-100 input-field" orientation="horizontal"> 
+        <TextField class="input"  [isEnabled]="!isLoading" #codeInput [text]="code" hint="Scan Code Here" (textChange)="onTextChange($event)" secure="true"> </TextField>
+     </StackLayout>
+  
+   
+ <ScrollView style="height: 100%;">
+   
+    <StackLayout *ngIf="!isLoading && isOngoing">
+        <StackLayout  class="card-header" elevation="40" radius="5">
+            <StackLayout>
+                <Label class="h3" text="Status Codes"></Label>
+            </StackLayout>
+        </StackLayout>
+        <StackLayout *ngFor="let item of currentStatusProcess.WarehouseConfirmationCode" class="lineItemContainer"  elevation="40" radius="5">
+            <GridLayout  rows="*,*">
+                <Label col="0" row="0" class="form-control" [text]="item.ConfirmationId"></Label>
+                <Label col="0" row="1" colSpan="2" class="form-control" [text]="item.Reference"></Label>
+           </GridLayout>
+        </StackLayout>
+    </StackLayout>
+
+
+    <StackLayout *ngIf="!isOngoing">
+       <StackLayout [ngSwitch]="switchStatus">
+           <StackLayout *ngSwitchCase="'picked'">
+            <StackLayout  class="card-header" elevation="40" radius="5">
+                <StackLayout>
+                    <Label class="h3" text="Set to {{ NextStatusText  }}"></Label>
+                </StackLayout>
+            </StackLayout>
+               
+                <StackLayout  class="card-header" elevation="40" radius="5">
+                    <StackLayout>
+                        <app-change-to-pick (doneProcess) ="onDoneProcessing($event)" [trans]="currentStatusProcess"></app-change-to-pick>
+                    </StackLayout>
+                </StackLayout>
+           </StackLayout>
+           <StackLayout *ngSwitchCase="'released'">
+            <Label col="0" row="1"  class="form-control" text="released "></Label>
+
+           </StackLayout>
+           <StackLayout *ngSwitchDefault>
+            <StackLayout  class="card-header" elevation="40" radius="5">
+                <StackLayout>
+                    <Label class="h3" text="Scan Transaction to Start"></Label>
+                </StackLayout>
+            </StackLayout>
+         </StackLayout>
+       </StackLayout>
+
+
+    </StackLayout>
+
+
+
+     <!-- <StackLayout *ngIf="currentSelectedMaterialTransfer">
+        <StackLayout  class="card-header" elevation="40" radius="5">
+            <GridLayout rows="auto,auto,auto,auto,auto,auto,auto" columns="100,auto,15,100,auto">
+                <Label class="h3" row="0" colspan="4" [text]="currentSelectedMaterialTransfer.Reference"></Label>
+                
+                <Label row="1" col="0" class="fieldLabel"  text="CIS: "></Label>
+                <Label row="1" col="1"  textWrap="true"  [text]="currentSelectedMaterialTransfer.CISReference"></Label>
+                <Label row="1" col="3" class="fieldLabel"  text="MODE: "></Label>
+                <Label row="1" col="4" textWrap="true"  [text]="currentSelectedMaterialTransfer.TransferMode"></Label>
+               
+                <Label row="2" col="0" class="fieldLabel"  text="From: "></Label>
+                <Label row="2" col="1" textWrap="true"  [text]="currentSelectedMaterialTransfer.From"></Label>
+                <Label row="2" col="3" class="fieldLabel"  text="To: "></Label>
+                <Label row="2" col="4" textWrap="true"  [text]="currentSelectedMaterialTransfer.To"></Label>
+                
+                
+                <Label row="3" col="0" class="fieldLabel"  text="Status: "></Label>
+                <Label row="3" col="1" textWrap="true"  [text]="currentSelectedMaterialTransfer.Status"></Label>
+                <Label row="3" col="3" class="fieldLabel"  text="Branch: "></Label>
+                <Label row="3" col="4" textWrap="true"  [text]="currentSelectedMaterialTransfer.BranchId"></Label>
+                
+                <Label row="4" col="0" class="fieldLabel"  text="Prep By: "></Label>
+                <Label row="4" col="1" textWrap="true"  [text]="currentSelectedMaterialTransfer.PreparedBy"></Label>
+                <Label row="4" col="3" class="fieldLabel"  text="Appr by: "></Label>
+                <Label row="4" col="4" textWrap="true"  [text]="currentSelectedMaterialTransfer.ApprovedBy"></Label>
+                
+                
+                <Label row="5" col="0" class="fieldLabel"  text="Instruction:"></Label>
+                <Label row="6" col="0" colspan="5" textWrap="true"  [text]="currentSelectedMaterialTransfer.Instructions"></Label>
+            </GridLayout>
+        </StackLayout>
+        <StackLayout  class="card-header" elevation="40" radius="5">
+            <StackLayout>
+                <Label class="h3" text="Line Item Details"></Label>
+            </StackLayout>
+        </StackLayout>
+        <StackLayout *ngFor="let item of currentSelectedMaterialTransfer.MaterialsTransferDetails" class="lineItemContainer"  elevation="40" radius="5">
+            <GridLayout columns="*,50"  rows="*,*">
+                <Label col="0" row="0" class="form-control" [text]="item.PartNumber"></Label>
+                <Label col="1" row="0" class="form-control" text=" QTY:{{ item.Quantity }}"></Label>
+                <Label col="0" row="1" colSpan="2" class="form-control" [text]="item.PartDescription"></Label>
+           
+           </GridLayout>
+          
+        </StackLayout>
+    
+    </StackLayout> -->
+</ScrollView>
+</StackLayout>
+
+
+
+
+

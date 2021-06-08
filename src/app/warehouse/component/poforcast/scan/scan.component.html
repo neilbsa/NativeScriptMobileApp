@@ -1,0 +1,74 @@
+<ActionBar class="action-bar">
+    <NavigationButton visibility="hidden"></NavigationButton>
+    <GridLayout columns="50, *">
+        <Label class="action-bar-title" text="Forcast" colSpan="2"></Label>
+        <Label class="fas" text="&#xf04a;" (tap)="navigateBack()"></Label>
+    </GridLayout>
+</ActionBar>
+
+
+<StackLayout>
+    <StackLayout  class="p-100 input-field" orientation="horizontal"> 
+        <TextField class="input" #codeInput [text]="code" hint="Scan Code Here" (textChange)="onTextChange($event)" secure="true"> </TextField>
+     </StackLayout>
+
+ 
+        <ScrollView class="page" style="height: 100%;">
+            <StackLayout>
+               
+            <StackLayout *ngIf="currentSelectedPurchaseOrder">
+                <StackLayout  class="card-header" elevation="40" radius="5">
+                    <StackLayout class="card-layout">
+                        <Label class="h3" [text]="currentSelectedPurchaseOrder.Reference"></Label>
+                    </StackLayout>
+                    <StackLayout class="card-layout">
+                        <Label class="fieldLabel"  text="Supplier: "></Label>
+                        <Label  [text]="currentSelectedPurchaseOrder.ProductSupplierId"></Label>
+                        <Label class="fieldLabel" text="Principal:"></Label>
+                        <Label  [text]="currentSelectedPurchaseOrder.Principal"></Label>
+                        
+                    </StackLayout>
+                    <StackLayout orientation="horizontal">
+                        <Label class="fieldLabel" text="Branch:"></Label>
+                        <Label  [text]="currentSelectedPurchaseOrder.BranchId"></Label>
+                        <Label style="margin-left: 100" class="fieldLabel" text="Warehouse:"></Label>
+                        <Label  [text]="currentSelectedPurchaseOrder.WareHouseId"></Label>
+                    </StackLayout>
+
+                    <StackLayout class="card-layout">
+                        <Label class="fieldLabel"  text="Attention: "></Label>
+                        <Label textWrap="true"  [text]="currentSelectedPurchaseOrder.Attention"></Label>
+                        <Label class="fieldLabel" text="Instruction:"></Label>
+                        <Label textWrap="true"  [text]="currentSelectedPurchaseOrder.Instruction"></Label>
+                        <Label class="fieldLabel" text="Remarks:"></Label>
+                        <Label  textWrap="true" [text]="currentSelectedPurchaseOrder.Remarks"></Label>
+                        
+                    </StackLayout>
+                </StackLayout>
+                <StackLayout  class="card-header" elevation="40" radius="5">
+                    <StackLayout>
+                        <Label class="h3" text="Line Item Details"></Label>
+                    </StackLayout>
+                </StackLayout>
+                <StackLayout *ngFor="let item of currentSelectedPurchaseOrder.Details" class="lineItemContainer"  elevation="40" radius="5">
+                    <GridLayout columns="*,50"  rows="*,*">
+                        <Label col="0" row="0" class="form-control" [text]="item.PartNumber"></Label>
+                        <Label col="1" row="0" class="form-control" text=" QTY:{{ item.Quantity }}"></Label>
+                        <Label col="0" row="1" colSpan="2" class="form-control" [text]="item.PartDescription"></Label>
+                   
+                   </GridLayout>
+                  
+                </StackLayout>
+            
+            </StackLayout>
+        </StackLayout>
+        </ScrollView>
+   
+
+
+</StackLayout>
+
+
+
+
+

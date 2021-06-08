@@ -1,0 +1,16 @@
+/* Add mobile styles for the component here.  */
+.forcast-item{
+    border-color: rgb(12, 11, 11);
+    border-style: solid;
+    border-width: 1px;
+    background-color: white;
+}
+
+.swipeRightButton{
+
+    background-color: red;
+}
+
+.swipeLeftButton{
+    background-color:greenyellow;
+}

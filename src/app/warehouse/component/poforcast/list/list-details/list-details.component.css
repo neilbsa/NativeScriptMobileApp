@@ -1,0 +1,73 @@
+/* Add mobile styles for the component here.  */
+.card-header {
+    background-color: #fff;
+    margin: 5 5 5 5;
+    border-color: rgba(0, 0, 0, 0.37);
+    border-width: 1px;
+    border-radius: 5px;
+    border-style: solid;
+    box-shadow: 12px 19px 19px -9px rgba(0,0,0,0.24);
+ 
+}
+.lineItemContainer{
+    border-color: rgba(0, 0, 0, 0.37);
+    border-width: 1px;
+    border-style: solid;
+    background-color: #fff;
+    margin: 0 5 0 5;
+    padding: 0 5 0 5;
+}
+
+.notFullFilled{
+    background-color: red;
+    font-weight: 500;
+    color:white;
+}
+
+.fullFilled{
+ 
+    font-weight: 500;
+    color:white;
+    background-color:greenyellow;
+}
+
+.card-layout {
+    padding: 5;
+}
+.card-layout .h1 {
+    margin-bottom: 5;
+}
+
+.fieldLabel{
+    font-weight: 500;
+    
+}
+
+.filterLabel{
+    padding-top: 15px;
+}
+.forcast-item{
+    border-color: rgb(12, 11, 11);
+    border-style: solid;
+    border-width: 1px;
+    background-color: white;
+}
+
+
+.swipe{
+    border-color: lightgray;
+    border-style: solid;
+    border-width: 1px;
+    color:white;
+    font-size: small;
+    font-weight: 500;
+}
+
+.swipeRightButton{
+
+    background-color: red;
+}
+
+.swipeLeftButton{
+    background-color:greenyellow;
+}
